@@ -1,4 +1,5 @@
 #include "LRUCache.h"
+using namespace std;
 
 LRUCache::LRUCache(int size)
 {
@@ -26,4 +27,18 @@ void LRUCache::reference(int newEntry)
 	// Update cache and queue accordingly with this new entry
 	cacheQueue.push_front(newEntry);
 	cacheMap[newEntry] = cacheQueue.begin();
+}
+
+void LRUCache::getHitRatio()
+{
+	if (cacheRequest != 0)
+	{
+		double hitRatio = cacheHit / cacheRequest * 100;
+		cout << hitRatio << endl;
+	}
+	else
+	{
+		cout << "Cache is empty" << endl;
+	}
+
 }

@@ -1,7 +1,6 @@
 // Main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <string>
-#include <iostream>
 #include <fstream>
 #include "LRUCache.h"
 
@@ -20,6 +19,8 @@ int main(int argc, char* argv[])
 	string trace = argv[2];
 	string traceName = trace + ".lis";
 
+	LRUCache myCache(cacheSize);
+
 	ifstream myFile(traceName);
 
 	if (myFile.good())
@@ -28,8 +29,14 @@ int main(int argc, char* argv[])
 		while (myFile >> startingBlock)
 		{
 			myFile >> numOfBlocks; myFile >> ignore; myFile >> ignore2;
-			cout << startingBlock << " " << numOfBlocks << " " << ignore << " " << ignore2 << endl; // DEBUGGING
+			//cout << startingBlock << " " << numOfBlocks << " " << ignore << " " << ignore2 << endl; // DEBUGGING
+			for (int i = 0; i < numOfBlocks; i++)
+			{
+				myCache.reference(startingBlock + i);
+			}
 		}
+
+		myCache.getHitRatio();
 	}
 	else
 	{

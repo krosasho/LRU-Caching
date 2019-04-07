@@ -157,6 +157,17 @@
   <ItemGroup>
     <ClInclude Include="LRUCache.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="OLTP.lis" />
+    <None Include="OLTP1000.lis" />
+    <None Include="OLTP2000.lis" />
+    <None Include="P12.lis" />
+    <None Include="P3.lis" />
+    <None Include="P31000.lis" />
+    <None Include="P32000.lis" />
+    <None Include="P4.lis" />
+    <None Include="P6.lis" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

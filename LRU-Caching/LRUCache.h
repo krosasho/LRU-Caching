@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <unordered_map>
+#include <iostream>
 
 using namespace std;
 
@@ -10,6 +11,7 @@ public:
 	LRUCache(int size); // Parameterized constructor
 	void printCache();
 	void reference(int newEntry);
+	void getHitRatio();
 
 private:
 	unordered_map<int, list<int>::iterator> cacheMap; // This is to be able to quickly keep track of what is and is not in our cache

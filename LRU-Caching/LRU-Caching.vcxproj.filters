@@ -27,4 +27,33 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="OLTP1000.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="OLTP2000.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P31000.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P32000.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="OLTP.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P3.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P4.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P6.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="P12.lis">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
