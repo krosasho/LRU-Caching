@@ -7,6 +7,7 @@ LRUCache::LRUCache(int size)
 
 void LRUCache::reference(int newEntry)
 {
+	cacheRequest++;
 	if (cacheMap.find(newEntry) == cacheMap.end()) // If true, new entry is not in cache
 	{
 		if (cacheQueue.size() == cacheSize) // If true, our cache is full, and space must be made for new entry.
@@ -18,6 +19,7 @@ void LRUCache::reference(int newEntry)
 	}
 	else // Else, new entry is already in cache somewhere
 	{
+		cacheHit++;
 		cacheQueue.erase(cacheMap[newEntry]);
 	}
 

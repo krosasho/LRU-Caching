@@ -1,13 +1,40 @@
 // Main.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
+#include <string>
 #include <iostream>
+#include <fstream>
 #include "LRUCache.h"
 
 using namespace std;
 
-int main()
+int main(int argc, char* argv[])
 {
-    std::cout << "Hello World!\n"; 
+	if (argc != 3)
+	{
+		cout << "Invalid command line parameters. Should be of form:";
+		cout << "./<lru || arc> <c, the cache size in number of pages> <TraceName (excluding .lis extension)>" << endl;
+		exit(1);
+	}
+
+	int cacheSize = atoi(argv[1]);
+	string trace = argv[2];
+	string traceName = trace + ".lis";
+
+	ifstream myFile(traceName);
+
+	if (myFile.good())
+	{
+		int startingBlock, numOfBlocks, ignore, ignore2;
+		while (myFile >> startingBlock)
+		{
+			myFile >> numOfBlocks; myFile >> ignore; myFile >> ignore2;
+			cout << startingBlock << " " << numOfBlocks << " " << ignore << " " << ignore2 << endl; // DEBUGGING
+		}
+	}
+	else
+	{
+		cout << "Failed to open file " << traceName << endl;
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
