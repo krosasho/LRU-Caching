@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include "LRUCache.h"
+#include "ARCCache.h"
 
 using namespace std;
 
@@ -14,33 +15,62 @@ int main(int argc, char* argv[])
 		cout << "./<lru || arc> <c, the cache size in number of pages> <TraceName (excluding .lis extension)>" << endl;
 		exit(1);
 	}
-
+	string fileName = argv[0];
 	int cacheSize = atoi(argv[1]);
 	string trace = argv[2];
 	string traceName = trace + ".lis";
 
-	LRUCache myCache(cacheSize);
-
 	ifstream myFile(traceName);
 
-	if (myFile.good())
+	if (fileName == "lru")
 	{
-		int startingBlock, numOfBlocks, ignore, ignore2;
-		while (myFile >> startingBlock)
-		{
-			myFile >> numOfBlocks; myFile >> ignore; myFile >> ignore2;
-			//cout << startingBlock << " " << numOfBlocks << " " << ignore << " " << ignore2 << endl; // DEBUGGING
-			for (int i = 0; i < numOfBlocks; i++)
-			{
-				myCache.reference(startingBlock + i);
-			}
-		}
+		LRUCache myCache(cacheSize);
 
-		myCache.getHitRatio();
+		if (myFile.good())
+		{
+			int startingBlock, numOfBlocks, ignore, ignore2;
+			while (myFile >> startingBlock)
+			{
+				myFile >> numOfBlocks; myFile >> ignore; myFile >> ignore2;
+				//cout << startingBlock << " " << numOfBlocks << " " << ignore << " " << ignore2 << endl; // DEBUGGING
+				for (int i = 0; i < numOfBlocks; i++)
+				{
+					myCache.reference(startingBlock + i);
+				}
+			}
+
+			myCache.getHitRatio();
+		}
+		else
+		{
+			cout << "Failed to open file " << traceName << endl;
+		}
+	}
+	else if (fileName == "arc")
+	{
+		ARCCache myCache(cacheSize);
+
+		if (myFile.good())
+		{
+			int startingBlock, numOfBlocks, ignore, ignore2;
+			while (myFile >> startingBlock)
+			{
+				myFile >> numOfBlocks; myFile >> ignore; myFile >> ignore2;
+				for (int i = 0; i < numOfBlocks; i++)
+				{
+					myCache.ARCreference(startingBlock + i);
+				}
+			}
+			myCache.getHitRatio();
+		}
+		else
+		{
+			cout << "Failed to open file " << traceName << endl;
+		}
 	}
 	else
 	{
-		cout << "Failed to open file " << traceName << endl;
+		cout << "Error: Program must be named 'lru' or 'arc'." << endl;
 	}
 }
 

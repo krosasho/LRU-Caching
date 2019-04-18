@@ -151,10 +151,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ARCCache.cpp" />
     <ClCompile Include="LRUCache.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ARCCache.h" />
     <ClInclude Include="LRUCache.h" />
   </ItemGroup>
   <ItemGroup>
